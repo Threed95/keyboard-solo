@@ -24,6 +24,15 @@ function displayWord() {
         span.textContent = currentWord[i];
         divWord.append(span);
     }
+    writeAnswers();
+}
+
+function writeAnswers() {
+    if (correctDisplay.textContent === "5") {
+        alert("Вы выиграли!");
+    } else if (wrongDisplay.textContent === "5") {
+        alert("Вы проиграли!");
+    }
 }
 
 function updateScore() {
@@ -41,6 +50,7 @@ function enterWord(event) {
     const pressKey = event.key;
     if (pressKey === currentWord[currentIndex]) {
         const spans = divWord.getElementsByTagName("span");
+        spans[currentIndex].classList.remove("w");
         spans[currentIndex].classList.add("c");
         currentIndex++;
     } else {
@@ -51,14 +61,9 @@ function enterWord(event) {
         makeMistakes();
     }
     if (currentIndex === currentWord.length) {
-        displayWord();
+        setTimeout(displayWord, 500);
         correctCount++;
         updateScore();
-    }
-    if (correctDisplay.textContent === "5") {
-        alert("Вы выиграли!");
-    } else if (wrongDisplay.textContent === "5") {
-        alert("Вы проиграли!");
     }
 
 }
