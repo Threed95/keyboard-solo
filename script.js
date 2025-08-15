@@ -64,12 +64,15 @@ function enterWord(event) {
         updateScore();
     }
     if (currentIndex === currentWord.length) {
+        if (mistakesScore > 0) {
+            wrongCount++;
+        } else {
+            correctCount++;
+        }
         setTimeout(displayWord, 500);
-        correctCount++;
         updateScore();
-    } else {
-        updateScore()
     }
+
 }
 
 
