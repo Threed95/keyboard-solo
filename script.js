@@ -8,7 +8,7 @@ let wordMistakes = document.querySelector(".word-mistakes");
 let correctCount = 0;
 let wrongCount = 0;
 let mistakesScore = 0;
-let isCorrect = false;
+let isCorrect = true;
 
 
 function generateWord() {
@@ -67,8 +67,9 @@ function enterWord(event) {
         setTimeout(displayWord, 500);
         correctCount++;
         updateScore();
+    } else {
+        updateScore()
     }
-
 }
 
 
