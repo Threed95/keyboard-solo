@@ -19,6 +19,8 @@ function displayWord() {
     divWord.innerHTML = "";
     currentWord = generateWord();
     currentIndex = 0;
+    mistakesScore = 0;
+    wordMistakes.textContent = mistakesScore;
     for (let i = 0; i < currentWord.length; i++) {
         const span = document.createElement("span");
         span.textContent = currentWord[i];
@@ -27,23 +29,24 @@ function displayWord() {
     writeAnswers();
 }
 
+
+
 function writeAnswers() {
     if (correctDisplay.textContent === "5") {
         alert("Вы выиграли!");
-    } else if (wrongDisplay.textContent === "5") {
+    } else if (wrongDisplay.textContent >= "5") {
         alert("Вы проиграли!");
     }
 }
 
+
 function updateScore() {
     correctDisplay.textContent = correctCount;
-
-}
-
-function makeMistakes() {
     wrongDisplay.textContent = wrongCount;
     wordMistakes.textContent = mistakesScore;
+
 }
+
 
 
 function enterWord(event) {
@@ -56,9 +59,8 @@ function enterWord(event) {
     } else {
         const spans = divWord.getElementsByTagName("span");
         spans[currentIndex].classList.add("w");
-        wrongCount++;
         mistakesScore++;
-        makeMistakes();
+        updateScore();
     }
     if (currentIndex === currentWord.length) {
         setTimeout(displayWord, 500);
