@@ -8,6 +8,7 @@ let wordMistakes = document.querySelector(".word-mistakes");
 let correctCount = 0;
 let wrongCount = 0;
 let mistakesScore = 0;
+let isCorrect = false;
 
 
 function generateWord() {
